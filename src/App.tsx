@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import type { ReactNode } from "react";
 import {
   Activity, ArrowDownRight, ArrowRight, ArrowUpRight, Bell, Bot, CalendarDays,
   Check, ChevronDown, ChevronRight, CircleHelp, Compass, FileText, Filter,
@@ -180,7 +181,7 @@ export default function App() {
   );
 }
 
-function StatCard({label,value,delta,icon,trend,note}:{label:string;value:string;delta:string;icon:React.ReactNode;trend:"up"|"neutral";note:string}) {
+function StatCard({label,value,delta,icon,trend,note}:{label:string;value:string;delta:string;icon:ReactNode;trend:"up"|"neutral";note:string}) {
   return <div className="stat-card"><div className="stat-top"><span>{label}</span><i>{icon}</i></div><div className="stat-value">{value}</div><div className="stat-bottom"><span className={trend==="up"?"positive":"neutral"}>{trend==="up"?<ArrowUpRight size={14}/>:<CalendarDays size={13}/>} {delta}</span><small>{note}</small></div></div>;
 }
 
@@ -193,6 +194,6 @@ function SectionView({section,onCompose,onConnect,conversations}:{section:Sectio
   return <div className="section-cards"><div className="panel section-panel"><div className="panel-heading"><div><h2>Conecte seus canais</h2><p>Integrações oficiais, com permissões e escopos transparentes.</p></div><Link2 size={20}/></div><IntegrationRow icon={<Instagram/>} name="Instagram" detail="Contas profissionais elegíveis via Meta Graph API" color="pink"/><IntegrationRow icon={<Facebook/>} name="Facebook" detail="Páginas e permissões aplicáveis" color="blue"/><IntegrationRow icon={<MessageCircle/>} name="WhatsApp Business" detail="WhatsApp Business Platform / Cloud API" color="green"/></div><div className="panel section-panel"><h2>Segurança e permissões</h2><ul className="security-list"><li><Check/> Credenciais armazenadas somente no servidor.</li><li><Check/> Acesso limitado às permissões concedidas.</li><li><Check/> Aprovação humana antes de enviar ou publicar.</li><li><Check/> Sem mensagens em massa ou coleta privada.</li></ul><p className="disclaimer">As conexões ainda não estão ativas. Esta tela é a estrutura inicial do produto.</p></div></div>;
 }
 
-function IntegrationRow({icon,name,detail,color}:{icon:React.ReactNode;name:string;detail:string;color:string}) {
+function IntegrationRow({icon,name,detail,color}:{icon:ReactNode;name:string;detail:string;color:string}) {
   return <div className="integration-row"><div className={`integration-icon ${color}`}>{icon}</div><div><strong>{name}</strong><span>{detail}</span></div><span className="not-connected">Não conectado</span></div>;
 }
